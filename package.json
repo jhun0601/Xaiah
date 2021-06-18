@@ -2,9 +2,10 @@
   "name": "xaiah",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js",
+    "start-server": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -18,6 +19,7 @@
   "homepage": "https://github.com/jhun0601/xaiah#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "mongoose": "^5.12.14"
+    "mongoose": "^5.12.14",
+    "nodemon": "^2.0.7"
   }
 }
