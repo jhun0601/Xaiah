@@ -1,0 +1,19 @@
+{
+  "name": "xaiah",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jhun0601/xaiah.git"
+  },
+  "author": "jhunmark ng",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jhun0601/xaiah/issues"
+  },
+  "homepage": "https://github.com/jhun0601/xaiah#readme"
+}
