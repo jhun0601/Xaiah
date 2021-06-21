@@ -6,16 +6,17 @@ import { Link } from 'react-router-dom';
 import {showErrorMsg, showSuccessMsg} from '../helpers/message';
 import {showLoading} from '../helpers/loading';
 import './css/Signup.css';
+import { signup } from '../api/auth';
 
 const Signup = () => {
     const[formData, setFormData] = useState({
-        username:'',
-        email:'',
-        password:'',
-        password2:'',
+        username:'jb',
+        email:'jb@g.com',
+        password:'abc123',
+        password2:'abc123',
         successMsg:false,
         errorMsg:false,
-        loading:true
+        loading:false
     })
     const {username, email, password, password2, successMsg, errorMsg, loading} = formData;
 
@@ -50,10 +51,21 @@ const Signup = () => {
                 errorMsg: "Passwords do not match"
             })
         } else {
-            setFormData({
-                ...formData, 
-                successMsg: 'Sign up successfully'
-            })
+            // setFormData({
+            //     ...formData, 
+            //     successMsg: 'Sign up successfully'
+            // })
+
+            const {username, email , password} = formData;
+            const data = {username, email, password}
+            setFormData({...formData, loading:true});
+
+            signup(data)
+                .then(response => {
+                    console.log(response);
+                }).catch(err => {
+                    console.log('error: ', err.message);
+                });
         }
     }
     const showSignUpForm = () => (
@@ -99,7 +111,7 @@ const Signup = () => {
                 <div className="col-md-5 mx-auto align-self-center">
                     {successMsg && showSuccessMsg(successMsg)}
                     {errorMsg && showErrorMsg(errorMsg)}
-                    {loading && <div className="text-center">{showLoading()}</div>}
+                    {loading && <div className="text-center pb-3">{showLoading()}</div>}
                     {showSignUpForm()}
                     {/* <p style={{color:'white'}}>{JSON.stringify(formData)}</p> */}
                 </div>
