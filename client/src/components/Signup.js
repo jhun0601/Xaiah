@@ -3,7 +3,8 @@ import isEmail from 'validator/lib/isEmail';
 import isEmpty from 'validator/lib/isEmpty';
 import equals from 'validator/lib/equals';
 import { Link } from 'react-router-dom';
-import {showErrorMsg} from '../helpers/message';
+import {showErrorMsg, showSuccessMsg} from '../helpers/message';
+import {showLoading} from '../helpers/loading';
 import './css/Signup.css';
 
 const Signup = () => {
@@ -14,7 +15,7 @@ const Signup = () => {
         password2:'',
         successMsg:false,
         errorMsg:false,
-        loading:false
+        loading:true
     })
     const {username, email, password, password2, successMsg, errorMsg, loading} = formData;
 
@@ -25,7 +26,9 @@ const Signup = () => {
         // console.log(e);
         setFormData({
             ...formData, 
-            [e.target.name] : e.target.value
+            [e.target.name] : e.target.value,
+            successMsg:'',
+            errorMsg:'',
         })
     }
     const handleSubmit = (e) => {
@@ -47,7 +50,10 @@ const Signup = () => {
                 errorMsg: "Passwords do not match"
             })
         } else {
-
+            setFormData({
+                ...formData, 
+                successMsg: 'Sign up successfully'
+            })
         }
     }
     const showSignUpForm = () => (
@@ -91,9 +97,11 @@ const Signup = () => {
         <div className="signup-container">
             <div className="row px-3 vh-100">
                 <div className="col-md-5 mx-auto align-self-center">
+                    {successMsg && showSuccessMsg(successMsg)}
                     {errorMsg && showErrorMsg(errorMsg)}
+                    {loading && <div className="text-center">{showLoading()}</div>}
                     {showSignUpForm()}
-                    <p style={{color:'white'}}>{JSON.stringify(formData)}</p>
+                    {/* <p style={{color:'white'}}>{JSON.stringify(formData)}</p> */}
                 </div>
             </div>
         </div>

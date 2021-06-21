@@ -5,3 +5,10 @@ export const showErrorMsg = (msg) => (
         {msg}
     </div>
 )
+
+
+export const showSuccessMsg = (msg) => (
+    <div className="alert alert-success" role="alert">
+        {msg}
+    </div>
+)
