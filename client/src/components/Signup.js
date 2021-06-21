@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
-import './css/Signup.css';
+import isEmail from 'validator/lib/isEmail';
+import isEmpty from 'validator/lib/isEmpty';
+import equals from 'validator/lib/equals';
 import { Link } from 'react-router-dom';
+import './css/Signup.css';
 
 const Signup = () => {
     const[formData, setFormData] = useState({
@@ -26,8 +29,25 @@ const Signup = () => {
     }
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(formData)
-
+        //validation
+        if(isEmpty(username) || isEmpty(email) || isEmpty(password) || isEmpty(password2)) {
+            setFormData({
+                ...formData,
+                errorMsg: "All fields are required"
+            })
+        } else if(!isEmail(email)) {
+            setFormData({
+                ...formData,
+                errorMsg: "Invalid Email"
+            })
+        } else if(!equals(password, password2)) {
+            setFormData({
+                ...formData,
+                errorMsg: "Passwords do not match"
+            })
+        } else {
+            
+        }
     }
     const showSignUpForm = () => (
         <form className="signup-form" onSubmit={handleSubmit}>
