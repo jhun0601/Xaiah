@@ -3,6 +3,7 @@ import isEmail from 'validator/lib/isEmail';
 import isEmpty from 'validator/lib/isEmpty';
 import equals from 'validator/lib/equals';
 import { Link } from 'react-router-dom';
+import {showErrorMsg} from '../helpers/message';
 import './css/Signup.css';
 
 const Signup = () => {
@@ -46,11 +47,11 @@ const Signup = () => {
                 errorMsg: "Passwords do not match"
             })
         } else {
-            
+
         }
     }
     const showSignUpForm = () => (
-        <form className="signup-form" onSubmit={handleSubmit}>
+        <form className="signup-form" onSubmit={handleSubmit} noValidate>
             <div className="form-group mb-2" >
                 <div className="input-group flex-nowrap">
                     <span className="input-group-text" id="addon-wrapping"><i className="fa fa-user"></i></span>
@@ -90,6 +91,7 @@ const Signup = () => {
         <div className="signup-container">
             <div className="row px-3 vh-100">
                 <div className="col-md-5 mx-auto align-self-center">
+                    {errorMsg && showErrorMsg(errorMsg)}
                     {showSignUpForm()}
                     <p style={{color:'white'}}>{JSON.stringify(formData)}</p>
                 </div>
