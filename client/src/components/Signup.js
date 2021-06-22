@@ -63,8 +63,19 @@ const Signup = () => {
             signup(data)
                 .then(response => {
                     console.log(response);
+                    setFormData({
+                        username:'',
+                        email:'',
+                        password:'',
+                        password2:'',
+                        loading:false,
+                        successMsg: response.data.successMessage
+                    })
                 }).catch(err => {
                     console.log('error: ', err.message);
+                    setFormData({
+                        ...formData, loading:false
+                    })
                 });
         }
     }
