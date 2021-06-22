@@ -1,4 +1,4 @@
-const {check} = require('express-validator');
+const {check, validationResult} = require('express-validator');
 
 exports.signupValidator = [
     check('username')
@@ -10,6 +10,19 @@ exports.signupValidator = [
         .normalizeEmail()
         .withMessage('Invalid Email'),
     check('password')
-        .isLength({min:8})
+        .isLength({ min:6 })
         .withMessage('password must be at least 8 characters long')
-]
+];
+
+exports.validatorResult = (req, res, next) => {
+    const result = validationResult(req);
+    const hasErrors = !result.isEmpty();
+
+    if(hasErrors) {
+        const firstError = result.array()[0].msg;
+        return res.status(400).json({
+            errorMessage:firstError
+        });
+    }
+    next();
+}

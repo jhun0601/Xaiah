@@ -74,7 +74,7 @@ const Signup = () => {
                 }).catch(err => {
                     console.log('error: ', err.message);
                     setFormData({
-                        ...formData, loading:false
+                        ...formData, loading:false, errorMsg:err.response.data.errorMessage
                     })
                 });
         }
