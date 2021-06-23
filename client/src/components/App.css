@@ -1,6 +1,6 @@
 .signup-container {
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)),
-    url("../images/company-bg.jpeg");
+    url("./images/company-bg.jpeg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;

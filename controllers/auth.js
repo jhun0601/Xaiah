@@ -23,7 +23,14 @@ exports.signupController = async (req, res) => {
         // console.log(newUser.password)
         await newUser.save();
 
+        res.json({
+            successMessage: 'Registration Success. Please Sign in.'
+        })
+
     } catch (error) {
-        console.log('signupController error', error)
+        console.log('signupController error', error);
+        res.status(500).json({
+            errorMessage: 'Server Error.'
+        })
     }
 }

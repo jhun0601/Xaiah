@@ -5,15 +5,14 @@ import equals from 'validator/lib/equals';
 import { Link } from 'react-router-dom';
 import {showErrorMsg, showSuccessMsg} from '../helpers/message';
 import {showLoading} from '../helpers/loading';
-import './css/Signup.css';
 import { signup } from '../api/auth';
 
 const Signup = () => {
     const[formData, setFormData] = useState({
-        username:'jb',
-        email:'jb@g.com',
-        password:'abc123',
-        password2:'abc123',
+        username:'',
+        email:'',
+        password:'',
+        password2:'',
         successMsg:false,
         errorMsg:false,
         loading:false
