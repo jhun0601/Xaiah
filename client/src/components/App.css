@@ -7,3 +7,13 @@
   opacity: 0.8;
   overflow: hidden;
 }
+
+.signin-container {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)),
+    url("./images/signin-bg.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.8;
+  overflow: hidden;
+}
